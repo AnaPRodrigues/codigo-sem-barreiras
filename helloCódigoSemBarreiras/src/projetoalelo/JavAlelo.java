@@ -416,5 +416,6 @@ public class JavAlelo {
                 saidaPrincipal = 4;
             }
         } while (saidaPrincipal != 4);
+        in.close();
     }
 }
