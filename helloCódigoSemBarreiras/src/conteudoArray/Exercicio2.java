@@ -10,12 +10,14 @@ public class Exercicio2 {
         try(Scanner in = new Scanner(System.in)){
             var programaContinua = true;
             var quantidade = 0;
+            var indice = 0;
 
             var numeros = new ArrayList<Integer>();
 
-            while (programaContinua){
+            while (programaContinua && indice < 0){
                 System.out.println("Digite um numero novo número: ");
                 var variavelteste = in.nextInt();
+                indice++;
                 if (variavelteste < 0){
                     numeros.add(variavelteste);
                     quantidade++;

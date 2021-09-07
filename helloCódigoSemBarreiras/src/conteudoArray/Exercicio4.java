@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Exercicio4 {
     public static void main(String[] args) {
         try(Scanner in = new Scanner(System.in)){
-            Integer armMaiorNumero = 0;
+            Integer armMaiorNumero = Integer.MIN_VALUE;
 
             var programaContinua = true;
 
