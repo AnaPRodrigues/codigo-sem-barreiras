@@ -9,6 +9,7 @@ public class Exercicio2 {
 
         try(Scanner in = new Scanner(System.in)){
             var programaContinua = true;
+            var quantidade = 0;
 
             var numeros = new ArrayList<Integer>();
 
@@ -17,6 +18,7 @@ public class Exercicio2 {
                 var variavelteste = in.nextInt();
                 if (variavelteste < 0){
                     numeros.add(variavelteste);
+                    quantidade++;
                 }
 
                 System.out.println("Deseja digitar mais um número: [s] e [n]");
@@ -27,6 +29,7 @@ public class Exercicio2 {
             }
             System.out.println("Os números digitados que são negativos foram: ");
             System.out.println(numeros);
+            System.out.println("A quantidade itens com valor negativo é: "+ quantidade);
         }
     }
 }
