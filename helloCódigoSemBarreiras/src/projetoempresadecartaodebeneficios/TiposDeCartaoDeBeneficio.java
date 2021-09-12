@@ -1,6 +1,9 @@
 package projetoempresadecartaodebeneficios;
 
+import java.time.LocalDate;
+
 public enum TiposDeCartaoDeBeneficio {
+
     VA {
         @Override
         public InterfaceCartaoDeBeneficio fabricar() {
@@ -13,12 +16,14 @@ public enum TiposDeCartaoDeBeneficio {
             return new ValeRefeicao();
         }
     },
-    VT {
+    VC {
         @Override
         public InterfaceCartaoDeBeneficio fabricar() {
             return new ValeCombustivel();
         }
-    };
+    }, String, Double, LocalDate;
+
 
     abstract InterfaceCartaoDeBeneficio fabricar();
+
 }

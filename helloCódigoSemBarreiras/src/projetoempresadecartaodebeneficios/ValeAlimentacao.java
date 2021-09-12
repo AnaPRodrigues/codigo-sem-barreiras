@@ -1,14 +1,22 @@
 package projetoempresadecartaodebeneficios;
 
-package projetoempresadecartaodebeneficios.Etapa02;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCartaoDeBeneficio {
+
+    public ValeAlimentacao(String identificadorCartao, Double saldoCartao, LocalDate dataDoCadastro,
+                           LocalDate validadeCartao, String nomeBeneficiario) {
+        super(identificadorCartao, saldoCartao, dataDoCadastro, validadeCartao, nomeBeneficiario);
+    }
+
     int index = 0;
+
 
     @Override
     public void adicionarTransacao(Double valor, Integer identificadorEstabelecimento, String tipoEstabelecimento) {
 
-        Ferramentas ferramentas = new Ferramentas();
         Transacao transacao = new Transacao();
         index = transacoesCartao.size() - 1;
 
@@ -21,7 +29,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
             System.out.println("Digite um valor maior que zero!");
 
             //Verifica a validade do cartão
-        } else if (!verificaValidade(pega data do cadastro do cartao)) {
+        } else if (!Ferramentas.verificaValidade(transacao.[index].localDataTransacao) {
             System.out.println("Cartão vencido! Não é possível realizar essa transação!");
 
             //Verifica se saldo é suficiente para transação
@@ -53,4 +61,15 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
 
         System.out.printf("Seu saldo atual é: R$%.2f.", this.saldoCartao);
     }
+
+    @Override
+    public void criaDataDeCadastro() {
+
+    }
+
+    @Override
+    public void criaDataDeValidade() {
+
+    }
 }
+

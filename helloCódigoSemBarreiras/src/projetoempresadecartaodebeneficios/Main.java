@@ -4,7 +4,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Beneficiario.cadastrarBeneficiario();
+        Estabelecimento.inicializaEstabelecimentos();
+
 
     }
 //   try (
@@ -31,3 +32,4 @@ public class Main {
 //
 //    } while (!escape.equals("n"));
 }
+

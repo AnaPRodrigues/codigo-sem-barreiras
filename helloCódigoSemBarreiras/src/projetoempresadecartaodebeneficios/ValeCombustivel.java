@@ -1,8 +1,14 @@
 package projetoempresadecartaodebeneficios;
 
-package projetoempresadecartaodebeneficios.Etapa02;
+import java.time.LocalDate;
 
 public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCartaoDeBeneficio {
+    int index = 0;
+
+    public ValeCombustivel(String identificadorCartao, Double saldoCartao, LocalDate dataDoCadastro,
+                           LocalDate validadeCartao, String nomeBeneficiario) {
+        super(identificadorCartao, saldoCartao, dataDoCadastro, validadeCartao, nomeBeneficiario);
+    }
 
     @Override
     public void adicionarTransacao(Double valor, Integer identificadorEstabelecimento, String tipoEstabelecimento) {
@@ -52,5 +58,21 @@ public class ValeCombustivel extends CartaoDeBeneficio implements InterfaceCarta
 
             System.out.printf("Seu saldo atual é: R$%.2f.", this.saldoCartao);
         }
+    }
+
+    @Override
+    public void mostrarSaldo() {
+
+        System.out.printf("Seu saldo atual é: R$%.2f.", this.saldoCartao);
+    }
+
+    @Override
+    public void criaDataDeCadastro() {
+
+    }
+
+    @Override
+    public void criaDataDeValidade() {
+
     }
 }

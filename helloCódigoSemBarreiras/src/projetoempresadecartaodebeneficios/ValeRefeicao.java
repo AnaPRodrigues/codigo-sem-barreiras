@@ -1,6 +1,14 @@
 package projetoempresadecartaodebeneficios;
 
+import java.time.LocalDate;
+
 public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDeBeneficio {
+    int index = 0;
+
+    public ValeRefeicao(String identificadorCartao, Double saldoCartao,
+                        LocalDate dataDoCadastro, LocalDate validadeCartao, String nomeBeneficiario) {
+        super(identificadorCartao, saldoCartao, dataDoCadastro, validadeCartao, nomeBeneficiario);
+    }
 
     @Override
     public void adicionarTransacao(Double valor, Integer identificadorEstabelecimento, String tipoEstabelecimento) {
@@ -10,7 +18,7 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
             System.out.println("Digite um valor maior que zero!");
 
             //Verifica a validade do cartão
-        } else if (!verificaValidade(pega data do cadastro do cartao)) {
+        } else if (!verificaValidade(pega data do cadastro do cartao)){
             System.out.println("Cartão vencido! Não é possível realizar essa transação!");
 
             //Verifica se saldo é suficiente para transação
@@ -19,7 +27,7 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
 
         } else if (!verificaTempoSegundos(pega registro datahora da ultima compra) &&
                 verificaEstabalecimento(pega registro ultimo estabelecimento) &&
-                verificaValor (pega registro valor ultima compra)) {
+                verificaValor(pega registro valor ultima compra)) {
 
         } else if () {
             System.out.println("Você não pode realizar mais que duas compras em 1 minuto!");
@@ -36,21 +44,22 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
         }
 
         @Override
-        public void mostrarSaldo() {
+        public void mostrarSaldo () {
 
             System.out.printf("Seu saldo atual é: R$%.2f.", this.saldoCartao);
         }
+
+
     }
-© 2021 GitHub, Inc.
-            Terms
-            Privacy
-    Security
-            Status
-    Docs
-    Contact GitHub
-    Pricing
-            API
-    Training
-            Blog
-    About
+
+    @Override
+    public void criaDataDeCadastro() {
+
+    }
+
+    @Override
+    public void criaDataDeValidade() {
+
+    }
 }
+

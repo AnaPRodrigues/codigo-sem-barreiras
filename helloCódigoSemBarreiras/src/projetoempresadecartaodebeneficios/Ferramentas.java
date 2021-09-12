@@ -68,4 +68,14 @@ public class Ferramentas {
         return data2.isBefore(data1);
     }
 
+    public static boolean verificaEstabelecimento(){
+
+    }
+
+    public static boolean verificaValor(){
+
+    }
+
+    //TODO implementar verificaEstabelecimento e verificaValor
 }
+

@@ -2,54 +2,117 @@ package projetoempresadecartaodebeneficios;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Beneficiario {
 
-    static ArrayList<Pessoa> beneficiarios = new ArrayList<>();
+    public String nomeBeneficiario;
+    public String senhaBeneficiario;
+    public InterfaceCartaoDeBeneficio vaIdentificador;
+    public InterfaceCartaoDeBeneficio vrIdentificador;
+    public InterfaceCartaoDeBeneficio vcIdentificador;
 
-    public static void cadastrarBeneficiario() {
+    public Beneficiario(String nomeBeneficiario, String senhaBeneficiario, InterfaceCartaoDeBeneficio vaIdentificador,
+                  InterfaceCartaoDeBeneficio vrIdentificador, InterfaceCartaoDeBeneficio vcIdentificador) {
+        this.nomeBeneficiario = nomeBeneficiario;
+        this.senhaBeneficiario = senhaBeneficiario;
+        this.vaIdentificador = vaIdentificador;
+        this.vrIdentificador = vrIdentificador;
+        this.vcIdentificador = vcIdentificador;
+    }
+
+    //Cria uma lista com os beneficiários
+    public static List<Beneficiario> listaBeneficiarios = new ArrayList<>();
+
+
+
+    public static void cadastrarBeneficiario(String nomeBeneficiario, String senhaBeneficiario,
+                                                   InterfaceCartaoDeBeneficio vaIdentificador, InterfaceCartaoDeBeneficio vrIdentificador,
+                                                   InterfaceCartaoDeBeneficio vcIdentificador){
+        var beneficiario = new Beneficiario(nomeBeneficiario, senhaBeneficiario,
+                vaIdentificador, vrIdentificador, vcIdentificador);
 
         try (Scanner in = new Scanner(System.in)) {
 
-            Pessoa pessoa = new Pessoa();
-            char opcao;
+            //TODO implementar o cadastro com base na versão antiga
 
+            System.out.println("=======================================");
+            System.out.println("Cadastro de beneficiário");
+            System.out.println("=======================================");
+            String continua;
             do {
-                System.out.println("=======================================");
-                System.out.println("Cadastro de beneficiário");
-                System.out.println("=======================================");
                 System.out.println("1 - Insira o nome do beneficiário:");
                 System.out.println("Insira o nome do beneficiário:");
-                pessoa.nome = in.nextLine().trim();
-                System.out.println("---------------------------------------");
-                System.out.println("2 - Dados do Vale Alimentação");
+                beneficiario.nomeBeneficiario = in.nextLine().trim();
+                System.out.println("\n---------------------------------------\n");
+                System.out.println("2 - Insira sua senha: ");
                 System.out.println("Insira a senha de 4 dígitos do cartão:");
-                pessoa.cartao1.senhaCartao = in.nextLine().trim();
-                pessoa.dataDoCadastro = LocalDate.now();
-                pessoa.cartao1.validadeCartao = pessoa.dataDoCadastro.plusYears(2);
-                System.out.println("---------------------------------------");
-                System.out.println("3 - Dados do Vale Refeição");
-                System.out.println("Insira a senha de 4 dígitos do cartão:");
-                pessoa.cartao2.senhaCartao = in.nextLine().trim();
-                pessoa.dataDoCadastro = LocalDate.now();
-                pessoa.cartao2.validadeCartao = pessoa.dataDoCadastro.plusYears(2);
-                System.out.println("---------------------------------------");
-                System.out.println("4 - Dados do Vale Transporte");
-                System.out.println("Insira a senha de 4 dígitos do cartão:");
-                pessoa.cartao3.senhaCartao = in.nextLine().trim();
-                pessoa.dataDoCadastro = LocalDate.now();
-                pessoa.cartao3.validadeCartao = pessoa.dataDoCadastro.plusYears(2);
-                System.out.println("---------------------------------------");
-                System.out.println("Cadastro realizado com sucesso!");
-                beneficiarios.add(pessoa);
-                System.out.println("---------------------------------------");
-                System.out.println("Deseja cadastrar outro beneficiário?");
-                System.out.println("Digite \"s\" para SIM e qualquer outra letra para sair.");
-                opcao = in.nextLine().trim().toLowerCase().charAt(0);
-            } while (opcao == 's');
+                beneficiario.senhaBeneficiario = in.nextLine().trim();
+                System.out.println("\n---------------------------------------\n");
+
+                //Fabricar cartões por meio do enum para salvar em variavel
+
+                InterfaceCartaoDeBeneficio valeAlimentacao = TiposDeCartaoDeBeneficio.VA.fabricar();
+                beneficiario.vaIdentificador = valeAlimentacao;
+                InterfaceCartaoDeBeneficio valeCombustivel = TiposDeCartaoDeBeneficio.VC.fabricar();
+                beneficiario.vcIdentificador = valeCombustivel;
+                InterfaceCartaoDeBeneficio valeRefeicao = TiposDeCartaoDeBeneficio.VR.fabricar();
+                beneficiario.vrIdentificador = valeRefeicao;
+                System.out.println("Seus três cartões foram criados: Vale Alimentação, Vale Combustível e Vale Refeição!");
+                System.out.println("Aproveite todos os nossos benefícios!");
+                System.out.println("\n---------------------------------------\n");
+
+                listaBeneficiarios.add(beneficiario);
+
+                System.out.println("Deseja cadastrar outro beneficiário [s] [n]?");
+                continua = in.nextLine().trim().toLowerCase();
+
+            } while (!continua.equals("n"));
 
         }
+
     }
 
 }
+
+    /*public String getNomeBeneficiario() {
+        return nomeBeneficiario;
+    }
+
+    public void setNomeBeneficiario(String nomeBeneficiario) {
+        this.nomeBeneficiario = nomeBeneficiario;
+    }
+
+    public String getSenhaBeneficiario() {
+        return senhaBeneficiario;
+    }
+
+    public void setSenhaBeneficiario(String senhaBeneficiario) {
+        this.senhaBeneficiario = senhaBeneficiario;
+    }
+
+    public String getVaIdentificador() {
+        return vaIdentificador;
+    }
+
+    public void setVaIdentificador(InterfaceCartaoDeBeneficio vaIdentificador) {
+        this.vaIdentificador = vaIdentificador;
+    }
+
+    public String getVrIdentificador() {
+        return vrIdentificador;
+    }
+
+    public void setVrIdentificador(InterfaceCartaoDeBeneficio vrIdentificador) {
+        this.vrIdentificador = vrIdentificador;
+    }
+
+    public String getVcIdentificador() {
+        return vcIdentificador;
+    }
+
+    public void setVcIdentificador(InterfaceCartaoDeBeneficio vcIdentificador) {
+        this.vcIdentificador = vcIdentificador;
+    }*/
+
