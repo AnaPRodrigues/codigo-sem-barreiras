@@ -7,9 +7,6 @@ import java.util.Scanner;
 
 public class Transacao {
 
-    private Beneficiario;
-    private Estabelecimento;
-
     private String identificadorDaTransacao;
     private String identificadorDoCartao;
     private LocalDateTime dataHoraTransacao;
@@ -17,6 +14,9 @@ public class Transacao {
     private String localizacaoDoEstabelecimento;
     private String tipoDoEstabelecimento;
     private Double valorDaTransacao;
+
+    private Beneficiario listaBeneficio;
+    private Estabelecimento listaEstabeleciomento;
 
     //Cria uma lista para armazenar as transações do VA
     public static List<Transacao> listaTransacoesVA = new ArrayList<>();
@@ -43,7 +43,7 @@ public class Transacao {
     //TODO método para tirar o extrato (pessoa seleciona extrato do dia ou extrato da semana, ou extrato do mês)
 
     public void criarTransacaoVA() {
-        var transacao = new Transacao(Sring identificadorDaTransacao, String identificadorDoCartao, LocalDateTime dataHoraTransacao,
+        var transacao = new Transacao(Spring identificadorDaTransacao, String identificadorDoCartao, LocalDateTime dataHoraTransacao,
                 String identicadorDoEstabelecimento, String localizacaoDoEstabelecimento,
                 String tipoDoEstabelecimento, Double valorDaTransacao);
 
@@ -53,11 +53,19 @@ public class Transacao {
             System.out.println("=======================================");
             String continua;
             do {
-                System.out.println("1 - Insira o nome do beneficiário:");
-                System.out.println("Insira o nome do beneficiário:");
+                System.out.println("1 - Insira a que se refere esta transação:");
                 transacao.identificadorDaTransacao = in.nextLine();
                 System.out.println("\n---------------------------------------\n");
-                transacao.identificadorDoCartao = beneficiario
+                transacao.identificadorDoCartao = "Vale Alimentação";
+                transacao.dataHoraTransacao = LocalDateTime.now();
+                System.out.println("Em qual estabelecimento foi gasto:" +
+                        "1 - Posto Delta" +
+                        "2 - Mercearia São José" +
+                        "3 - Supermercado ABC" +
+                        "4 - Padaria Sonhos" +
+                        "5 - Restaurante La Marmita");
+                transacao.identicadorDoEstabelecimento = listaEstabeleciomento.
+
 
 
             } while (continua);
@@ -119,4 +127,7 @@ public class Transacao {
     public void setValorDaTransacao(Double valorDaTransacao) {
         this.valorDaTransacao = valorDaTransacao;
     }
+
+
+
 }

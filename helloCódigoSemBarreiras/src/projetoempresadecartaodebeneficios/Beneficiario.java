@@ -14,7 +14,7 @@ public class Beneficiario {
     public InterfaceCartaoDeBeneficio vcIdentificador;
 
     public Beneficiario(String nomeBeneficiario, String senhaBeneficiario, InterfaceCartaoDeBeneficio vaIdentificador,
-                  InterfaceCartaoDeBeneficio vrIdentificador, InterfaceCartaoDeBeneficio vcIdentificador) {
+                        InterfaceCartaoDeBeneficio vrIdentificador, InterfaceCartaoDeBeneficio vcIdentificador) {
         this.nomeBeneficiario = nomeBeneficiario;
         this.senhaBeneficiario = senhaBeneficiario;
         this.vaIdentificador = vaIdentificador;
@@ -26,10 +26,9 @@ public class Beneficiario {
     public static List<Beneficiario> listaBeneficiarios = new ArrayList<>();
 
 
-
     public static void cadastrarBeneficiario(String nomeBeneficiario, String senhaBeneficiario,
-                                                   InterfaceCartaoDeBeneficio vaIdentificador, InterfaceCartaoDeBeneficio vrIdentificador,
-                                                   InterfaceCartaoDeBeneficio vcIdentificador){
+                                             InterfaceCartaoDeBeneficio vaIdentificador, InterfaceCartaoDeBeneficio vrIdentificador,
+                                             InterfaceCartaoDeBeneficio vcIdentificador) {
         var beneficiario = new Beneficiario(nomeBeneficiario, senhaBeneficiario,
                 vaIdentificador, vrIdentificador, vcIdentificador);
 
@@ -74,9 +73,8 @@ public class Beneficiario {
 
     }
 
-}
 
-    /*public String getNomeBeneficiario() {
+    public String getNomeBeneficiario() {
         return nomeBeneficiario;
     }
 
@@ -114,5 +112,6 @@ public class Beneficiario {
 
     public void setVcIdentificador(InterfaceCartaoDeBeneficio vcIdentificador) {
         this.vcIdentificador = vcIdentificador;
-    }*/
+    }
 
+}

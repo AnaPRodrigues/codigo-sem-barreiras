@@ -36,7 +36,7 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
         } else if (valor > this.saldoCartao) {
             System.out.println("Você não tem saldo suficiente para realizar esta operação!");
 
-        } else if (ferramentas.verificaTempoSegundos(transacao[index].localDataTransacao) &&
+        } else if (Ferramentas.verificaTempoSegundos(transacao[index].localDataTransacao) &&
                 verificaEstabalecimento(pega registro ultimo estabelecimento) &&
                 verificaValor (pega registro valor ultima compra)) {
 
