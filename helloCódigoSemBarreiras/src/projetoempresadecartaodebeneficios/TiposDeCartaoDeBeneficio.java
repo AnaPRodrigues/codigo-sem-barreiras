@@ -21,8 +21,7 @@ public enum TiposDeCartaoDeBeneficio {
         public InterfaceCartaoDeBeneficio fabricar() {
             return new ValeCombustivel();
         }
-    }, String, Double, LocalDate;
-
+    };
 
     abstract InterfaceCartaoDeBeneficio fabricar();
 

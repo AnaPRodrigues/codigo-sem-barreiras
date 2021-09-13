@@ -44,6 +44,26 @@ public class Estabelecimento {
                 "restaurante", "Lauro de Freitas/BA"));
     }
 
+    String buscaEstabelecimento(String codigoEstabelecimento) {
+        for (int i = 0; i < listaEstabelecimentos.size(); i++) {
+            if (listaEstabelecimentos.get(i).getIdentificadorEstabelecimento().contains(codigoEstabelecimento)) {
+                return listaEstabelecimentos.get(i).nomeEstabelecimento;
+            } else {
+                System.out.println("O código digitado está errado");
+            }
+        }
+    }
+
+    String buscaLocalizacaoEstabelecimento(String codigoEstabelecimento) {
+        for (int i = 0; i < listaEstabelecimentos.size(); i++) {
+            if (listaEstabelecimentos.get(i).getIdentificadorEstabelecimento().contains(codigoEstabelecimento)) {
+                return listaEstabelecimentos.get(i).localizacaoEstabelecimento;
+            } else {
+                System.out.println("O código digitado está errado");
+            }
+        }
+    }
+
     public String getIdentificadorEstabelecimento() {
         return identificadorEstabelecimento;
     }
@@ -59,5 +79,18 @@ public class Estabelecimento {
     public String getLocalizacaoEstabelecimento() {
         return localizacaoEstabelecimento;
     }
+
+    public void setNomeEstabelecimento(String nomeEstabelecimento) {
+        this.nomeEstabelecimento = nomeEstabelecimento;
+    }
+
+    public void setTipoEstabelecimento(String tipoEstabelecimento) {
+        this.tipoEstabelecimento = tipoEstabelecimento;
+    }
+
+    public void setLocalizacaoEstabelecimento(String localizacaoEstabelecimento) {
+        this.localizacaoEstabelecimento = localizacaoEstabelecimento;
+    }
+
 }
 

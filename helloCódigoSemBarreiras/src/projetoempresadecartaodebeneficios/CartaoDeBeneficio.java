@@ -12,22 +12,13 @@ public abstract class CartaoDeBeneficio {
     protected LocalDate validadeCartao;
     protected String nomeBeneficiario;
 
-    public CartaoDeBeneficio(String identificadorCartao, Double saldoCartao, LocalDate dataDoCadastro,
-                                LocalDate validadeCartao, String nomeBeneficiario) {
-        this.identificadorCartao = identificadorCartao;
-        this.saldoCartao = saldoCartao;
-        this.dataDoCadastro = dataDoCadastro;
-        this.validadeCartao = validadeCartao;
-        this.nomeBeneficiario = nomeBeneficiario;
-    }
 
     public void mostrarSaldo() {
 
-        System.out.printf("%s, seu saldo atual é: %.2f.%n", this.nomeBeneficiario, saldoCartao);
+        System.out.printf("%s, seu saldo atual é: %.2f.%n", this.saldoCartao);
     }
 
-    void adicionarTransacao (Double valor) {
+    void adicionarTransacao(Double valor) {
 
     }
-
 }

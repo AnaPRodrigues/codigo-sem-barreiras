@@ -1,6 +1,7 @@
 package projetoempresadecartaodebeneficios;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,14 +13,16 @@ public class Beneficiario {
     public InterfaceCartaoDeBeneficio vaIdentificador;
     public InterfaceCartaoDeBeneficio vrIdentificador;
     public InterfaceCartaoDeBeneficio vcIdentificador;
+    private LocalDateTime dataDeCadastro;
 
     public Beneficiario(String nomeBeneficiario, String senhaBeneficiario, InterfaceCartaoDeBeneficio vaIdentificador,
-                        InterfaceCartaoDeBeneficio vrIdentificador, InterfaceCartaoDeBeneficio vcIdentificador) {
+                        InterfaceCartaoDeBeneficio vrIdentificador, InterfaceCartaoDeBeneficio vcIdentificador, LocalDateTime dataDeCadastro) {
         this.nomeBeneficiario = nomeBeneficiario;
         this.senhaBeneficiario = senhaBeneficiario;
         this.vaIdentificador = vaIdentificador;
         this.vrIdentificador = vrIdentificador;
         this.vcIdentificador = vcIdentificador;
+        this.dataDeCadastro = dataDeCadastro;
     }
 
     //Cria uma lista com os beneficiários
@@ -28,9 +31,9 @@ public class Beneficiario {
 
     public static void cadastrarBeneficiario(String nomeBeneficiario, String senhaBeneficiario,
                                              InterfaceCartaoDeBeneficio vaIdentificador, InterfaceCartaoDeBeneficio vrIdentificador,
-                                             InterfaceCartaoDeBeneficio vcIdentificador) {
+                                             InterfaceCartaoDeBeneficio vcIdentificador, LocalDateTime dataDeCadastro) {
         var beneficiario = new Beneficiario(nomeBeneficiario, senhaBeneficiario,
-                vaIdentificador, vrIdentificador, vcIdentificador);
+                vaIdentificador, vrIdentificador, vcIdentificador, dataDeCadastro);
 
         try (Scanner in = new Scanner(System.in)) {
 
@@ -58,9 +61,11 @@ public class Beneficiario {
                 beneficiario.vcIdentificador = valeCombustivel;
                 InterfaceCartaoDeBeneficio valeRefeicao = TiposDeCartaoDeBeneficio.VR.fabricar();
                 beneficiario.vrIdentificador = valeRefeicao;
+
                 System.out.println("Seus três cartões foram criados: Vale Alimentação, Vale Combustível e Vale Refeição!");
                 System.out.println("Aproveite todos os nossos benefícios!");
                 System.out.println("\n---------------------------------------\n");
+                beneficiario.dataDeCadastro = LocalDateTime.now();
 
                 listaBeneficiarios.add(beneficiario);
 
@@ -90,7 +95,7 @@ public class Beneficiario {
         this.senhaBeneficiario = senhaBeneficiario;
     }
 
-    public String getVaIdentificador() {
+    public InterfaceCartaoDeBeneficio getVaIdentificador() {
         return vaIdentificador;
     }
 
@@ -98,7 +103,7 @@ public class Beneficiario {
         this.vaIdentificador = vaIdentificador;
     }
 
-    public String getVrIdentificador() {
+    public InterfaceCartaoDeBeneficio getVrIdentificador() {
         return vrIdentificador;
     }
 
@@ -106,12 +111,20 @@ public class Beneficiario {
         this.vrIdentificador = vrIdentificador;
     }
 
-    public String getVcIdentificador() {
+    public InterfaceCartaoDeBeneficio getVcIdentificador() {
         return vcIdentificador;
     }
 
     public void setVcIdentificador(InterfaceCartaoDeBeneficio vcIdentificador) {
         this.vcIdentificador = vcIdentificador;
+    }
+
+    public LocalDateTime getDataDeCadastro() {
+        return dataDeCadastro;
+    }
+
+    public void setDataDeCadastro(LocalDateTime dataDeCadastro) {
+        this.dataDeCadastro = dataDeCadastro;
     }
 
 }

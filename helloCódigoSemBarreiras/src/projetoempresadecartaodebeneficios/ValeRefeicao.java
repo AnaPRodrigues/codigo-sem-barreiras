@@ -5,13 +5,8 @@ import java.time.LocalDate;
 public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDeBeneficio {
     int index = 0;
 
-    public ValeRefeicao(String identificadorCartao, Double saldoCartao,
-                        LocalDate dataDoCadastro, LocalDate validadeCartao, String nomeBeneficiario) {
-        super(identificadorCartao, saldoCartao, dataDoCadastro, validadeCartao, nomeBeneficiario);
-    }
-
     @Override
-    public void adicionarTransacao(Double valor, Integer identificadorEstabelecimento, String tipoEstabelecimento) {
+    public void validarTransacao(Double valor) {
 
         //Verifica se é valor negativo
         if (valor < 0) {
@@ -41,12 +36,6 @@ public class ValeRefeicao extends CartaoDeBeneficio implements InterfaceCartaoDe
             System.out.printf("Compra efetuada com sucesso!%n");
             System.out.printf("Você recebeu R$%.2f de cashback.", valor * 0.03);
             System.out.printf("Seu saldo atual: R$%.2f.", this.saldoCartao);
-        }
-
-        @Override
-        public void mostrarSaldo () {
-
-            System.out.printf("Seu saldo atual é: R$%.2f.", this.saldoCartao);
         }
 
 

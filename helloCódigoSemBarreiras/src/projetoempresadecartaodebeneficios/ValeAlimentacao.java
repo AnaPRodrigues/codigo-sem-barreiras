@@ -6,39 +6,36 @@ import java.util.ArrayList;
 
 public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCartaoDeBeneficio {
 
-    public ValeAlimentacao(String identificadorCartao, Double saldoCartao, LocalDate dataDoCadastro,
-                           LocalDate validadeCartao, String nomeBeneficiario) {
-        super(identificadorCartao, saldoCartao, dataDoCadastro, validadeCartao, nomeBeneficiario);
-    }
-
+    public Transacao transacaoVa;
+    public Beneficiario beneficiario;
     int index = 0;
 
 
-    @Override
-    public void adicionarTransacao(Double valor, Integer identificadorEstabelecimento, String tipoEstabelecimento) {
+    public void validarTransacaoVA(Double valor) {
 
-        Transacao transacao = new Transacao();
-        index = transacoesCartao.size() - 1;
+        String compararEstabelecimento = transacaoVa.getTipoDoEstabelecimento();
+        Double comparaValor = transacaoVa.getValorDaTransacao();
 
         //Regra específica do VA: Verifica se é posto de combustível
-        if (tipoEstabelecimento.equals("Posto_combustível")) {
+        if (transacaoVa.getIdenticadorDoEstabelecimento().equals("Posto Delta")) {
             System.out.println("Não é possível usar este benefício neste estabelecimento!");
 
             //Verifica se é valor negativo
-        } else if (valor < 0) {
+        } else if (transacaoVa.getValorDaTransacao() < 0) {
             System.out.println("Digite um valor maior que zero!");
 
             //Verifica a validade do cartão
-        } else if (!Ferramentas.verificaValidade(transacao.[index].localDataTransacao) {
+        } else if (!Ferramentas.verificaValidade(beneficiario.getDataDeCadastro()) {
             System.out.println("Cartão vencido! Não é possível realizar essa transação!");
 
             //Verifica se saldo é suficiente para transação
-        } else if (valor > this.saldoCartao) {
+        } else if (transacaoVa.getValorDaTransacao() > this.saldoCartao) {
             System.out.println("Você não tem saldo suficiente para realizar esta operação!");
 
-        } else if (Ferramentas.verificaTempoSegundos(transacao[index].localDataTransacao) &&
-                verificaEstabalecimento(pega registro ultimo estabelecimento) &&
-                verificaValor (pega registro valor ultima compra)) {
+
+        } else if (!Ferramentas.verificaTempoSegundos(transacaoVa.getDataHoraTransacao()) &&
+                transacaoVa.getIdenticadorDoEstabelecimento().equals(transacaoVa.buscaEstabelecimentoVA(compararEstabelecimento)) &&
+                transacaoVa.getValorDaTransacao().equals(transacaoVa.buscaUltimoValorVA(comparaValor)){
 
         } else if () {
             System.out.println("Você não pode realizar mais que duas compras em 1 minuto!");
@@ -47,19 +44,11 @@ public class ValeAlimentacao extends CartaoDeBeneficio implements InterfaceCarta
             this.saldoCartao -= valor;
             this.saldoCartao += valor * 0.015;
 
-            //TODO adiciona essa transação no arraylist de transações do usuário
-
             System.out.printf("Compra efetuada com sucesso!%n");
             System.out.printf("Você recebeu R$%.2f de cashback.", valor * 0.015);
             System.out.printf("Seu saldo atual: R$%.2f.", this.saldoCartao);
         }
 
-    }
-
-    @Override
-    public void mostrarSaldo() {
-
-        System.out.printf("Seu saldo atual é: R$%.2f.", this.saldoCartao);
     }
 
     @Override

@@ -31,7 +31,7 @@ public class Ferramentas {
 
     //Verifica se passou 30 segundos desde a última transação do cartão
     //True se passou, false se ainda precisa esperar
-    public static boolean verificaTempoSegundos (LocalTime ultimaCompra) {
+    public static boolean verificaTempoSegundos (LocalDateTime ultimaCompra) {
 
         long tempoQuePassou = ChronoUnit.SECONDS.between(ultimaCompra, LocalTime.now());
 
@@ -58,17 +58,17 @@ public class Ferramentas {
 
     //Verifica a data de validade do cartão
     //Retorna TRUE se estiver válido e FALSE se estiver vencido
-    public static boolean verificaValidade (LocalDate dataValida) {
+    public static boolean verificaValidade (LocalDateTime dataValida) {
 
         //Pega a data do cadastro e aumenta dois anos (validade do cartão)
-        LocalDate data1 = dataValida.plusYears(2);
+        LocalDateTime data1 = dataValida.plusYears(2);
         //Pega a data de hoje
-        LocalDate data2 = LocalDate.now();
+        LocalDateTime data2 = LocalDateTime.now();
 
         return data2.isBefore(data1);
     }
 
-    public static boolean verificaEstabelecimento(){
+        public static boolean verificaEstabelecimento(){
 
     }
 
